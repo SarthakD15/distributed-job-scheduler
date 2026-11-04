@@ -1,0 +1,13 @@
+add_executable(broker
+    src/main.cpp
+    src/broker.cpp
+    src/worker_registry.cpp
+    src/job_store.cpp
+    src/postgres_job_store.cpp)
+
+target_include_directories(broker PRIVATE
+    "${CMAKE_CURRENT_SOURCE_DIR}/include")
+
+target_link_libraries(broker PRIVATE common libpqxx::pqxx)
+
+copy_to_run_bin(broker)
